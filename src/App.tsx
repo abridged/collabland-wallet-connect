@@ -162,7 +162,7 @@ class App extends React.Component<any, any> {
     ...INITIAL_STATE,
   };
 
-  public walletConnectInit = async () => {
+  public connect = async () => {
     // bridge url
     const bridge = "https://bridge.walletconnect.org";
 
@@ -367,7 +367,7 @@ class App extends React.Component<any, any> {
     }
   };
 
-  public testSignPersonalMessage = async () => {
+  public testSignMessage = async () => {
     const { connector, address, chainId } = this.state;
 
     if (!connector) {
@@ -375,13 +375,13 @@ class App extends React.Component<any, any> {
     }
 
     // test message
-    const message = "My email is john@doe.com - 1537836206101";
+    const message = `My email is john@doe.com - ${new Date().toUTCString()}`;
 
     // encode message (hex)
     const hexMsg = convertUtf8ToHex(message);
 
-    // personal_sign params
-    const msgParams = [hexMsg, address];
+    // eth_sign params
+    const msgParams = [address, hexMsg];
 
     try {
       // open modal
@@ -391,15 +391,15 @@ class App extends React.Component<any, any> {
       this.setState({ pendingRequest: true });
 
       // send message
-      const result = await connector.signPersonalMessage(msgParams);
+      const result = await connector.signMessage(msgParams);
 
       // verify signature
-      const hash = hashPersonalMessage(message);
+      const hash = hashMessage(message);
       const valid = await verifySignature(address, result, hash, chainId);
 
       // format displayed result
       const formattedResult = {
-        method: "personal_sign",
+        method: "eth_sign",
         address,
         valid,
         result,
@@ -558,7 +558,7 @@ class App extends React.Component<any, any> {
                   {/* <span>{`v${process.env.REACT_APP_VERSION}`}</span> */}
                 </h3>
                 <SButtonContainer>
-                  <SConnectButton left onClick={this.walletConnectInit} fetching={fetching}>
+                  <SConnectButton left onClick={this.connect} fetching={fetching}>
                     {"Connect to WalletConnect"}
                   </SConnectButton>
                 </SButtonContainer>
