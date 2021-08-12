@@ -26,8 +26,8 @@
     "url": "https://github.com/abridged/collabland-wallet-connect/issues"
   },
   "dependencies": {
-    "@walletconnect/client": "^1.5.0",
-    "@walletconnect/qrcode-modal": "^1.5.0",
+    "@walletconnect/client": "^1.5.5",
+    "@walletconnect/qrcode-modal": "^1.5.5",
     "axios": "^0.21.1",
     "bignumber.js": "^9.0.1",
     "blockies-ts": "^1.0.0",
