@@ -3,7 +3,7 @@ import styled from "styled-components";
 import * as PropTypes from "prop-types";
 import Blockie from "./Blockie";
 // import Banner from "./Banner";
-import { ellipseAddress, getChainData } from "../helpers/utilities";
+import { ellipseAddress } from "../helpers/utilities";
 import { transitions } from "../styles";
 
 const SHeader = styled.div`
@@ -80,15 +80,13 @@ interface IHeaderProps {
 }
 
 const Header = (props: IHeaderProps) => {
-  const { connected, address, chainId, killSession } = props;
-  const activeChain = chainId ? getChainData(chainId).name : null;
+  const { connected, address, killSession } = props;
+  // const activeChain = chainId ? getChainData(chainId).name : null;
   return (
     <SHeader {...props}>
-      {connected && activeChain ? (
-        <SActiveChain>
-          <p>{`Connected to`}</p>
-          <p>{activeChain}</p>
-        </SActiveChain>
+      {connected ? (
+        <SActiveChain>{/* <p>{`Connected to`}</p>
+          <p>{activeChain}</p> */}</SActiveChain>
       ) : (
         <div />
       )}
