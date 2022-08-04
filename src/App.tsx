@@ -256,7 +256,9 @@ class App extends React.Component<any, any> {
     });
     const { autoFlow } = this.state;
     if (autoFlow) {
-      this.testSignTypedData();
+      setTimeout(() => {
+        this.testSignTypedData();
+      }, 1000);
     }
   };
 
