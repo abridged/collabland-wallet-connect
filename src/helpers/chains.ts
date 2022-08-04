@@ -177,4 +177,20 @@ export const SUPPORTED_CHAINS: IChainData[] = [
       balance: "",
     },
   },
+  {
+    name: "Polygone Mainnet",
+    short_name: "MATIC",
+    chain: "polygon",
+    network: "mainnet",
+    chain_id: 137,
+    network_id: 1,
+    rpc_url: "https://polygon-mainnet.infura.io/v3/%API_KEY%",
+    native_currency: {
+      symbol: "MATIC",
+      name: "MATIC",
+      decimals: "18",
+      contractAddress: "",
+      balance: "",
+    },
+  },
 ];
